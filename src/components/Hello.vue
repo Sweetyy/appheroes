@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Just do it</h2>
+    <h1>{{ title }}</h1>
+    <div>
+      <router-link to="/heroes">Heroes</router-link>
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'We are all Heroes'
+      title: 'We are all Heroes'
     }
   }
 }
