@@ -2,7 +2,7 @@
     <div class="modal" :id="id" >
         <div class="modal-content">
             <div class="modal-header">
-                <h4> {{ title }} </h4>
+                <h3> {{ title }} </h3>
             </div>
             <div class="modal-body">
                  <slot></slot>
@@ -52,6 +52,6 @@ export default {
     padding: 24px;
     color: rgba(0,0,0,.87);
     border-radius: 4px;
-    min-width: 200px;
+    min-width: 400px;
 }
 </style>

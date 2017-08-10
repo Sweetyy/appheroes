@@ -1,10 +1,10 @@
 <template>
-  <div class="hello">
+  <section class="hello">
     <h1>{{ title }}</h1>
     <div>
       <banner :currentview="'home'"></banner>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

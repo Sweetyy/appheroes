@@ -1,22 +1,34 @@
 <template>
-  <div class="heroes">
+  <section class="main heroes">
     <h1>{{ title }}</h1>
     <banner :currentview="'heroes'"></banner>
     <div>
       <ul>
-        <li v-for="heroe in heroes">
+        <li v-for="(heroe, index) in heroes">
+          <a @click="removeElement()" class="item-remove">X</a>
           <h3 @click="info(heroe.name)" v-bind:class="heroe.name == active ? 'active' : ''">{{heroe.name}}</h3>
           <p v-if="heroe.name == active">{{heroe.description}}</p>
         </li>
       </ul>
     </div>
 
-    <a @click="showmodal('createhero')">Create your hero!</a>
+    <a @click="showModal('createhero')" class="btn-sweet btn-fat">Summon your hero!</a>
 
-    <modal :id="'createhero'" :title="'Create your hero'" v-bind:class="open == 'createhero' ? 'show' : ''">
-      <slot><a @click="open = ''">Close</a></slot>
+    <modal :id="'createhero'" :title="'Summon your hero'" v-bind:class="open == 'createhero' ? 'show' : ''">
+      <slot>
+        <div class="form-group">
+          <input type="text" v-model="heroes.name" class="form-heroe" placeholder="Your Heroe's name">
+        </div>
+        <div class="form-group">
+          <textarea v-model="heroes.description" class="form-heroe" rows="4" placeholder="About him/her..."></textarea>
+        </div>
+        <div class="flex-box flex-between">
+          <a @click="open = ''" class="btn-sweet">Not yet</a>
+          <a @click="addRow" class="btn-sweet" :disabled="!heroes.name">Summon</a>
+        </div>
+      </slot>
     </modal>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -41,9 +53,17 @@ export default {
     info: function (value) {
       this.active = value;
     },
-    showmodal: function (key) {
+    showModal: function (key) {
       this.open = key;
-      console.log(this.open);
+    },
+    addRow: function (){
+      if(this.heroes.name != null && this.heroes.description != null) {
+        this.heroes.push({name: this.heroes.name, description: this.heroes.description});
+        this.open = '';
+      }
+    },
+    removeElement: function (index) {
+      this.heroes.splice(index, 1);
     }
   },
   components: {
@@ -58,16 +78,19 @@ export default {
 ul {
   list-style-type: none;
   padding: 0;
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: flex-start;
+  flex-flow: row wrap;
 }
 
 li {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 10px;
+  margin: 10px;
   width: 300px;
   box-shadow: 0 2px 2px rgba(10,16,20,.24), 0 0 2px rgba(10,16,20,.12);
   padding: 20px;
@@ -81,5 +104,17 @@ h3 {
 h3.active {
   cursor: default;
   color: #42b983;
+}
+
+.item-remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: 0;
+  transition: all 0.25s;
+}
+
+li:hover .item-remove {
+  opacity: 1;
 }
 </style>
