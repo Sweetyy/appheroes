@@ -11,7 +11,7 @@
       </ul>
     </div>
     <modal :id="'createhero'" :title="'Create your hero'">
-      <p>Test</p>
+      <slot>Test</slot>
     </modal>
   </div>
 </template>
@@ -32,6 +32,9 @@ export default {
     }
   },
   methods: {
+    info: function (value) {
+      this.active = value;
+    }
   },
   components: {
     'modal': Modal

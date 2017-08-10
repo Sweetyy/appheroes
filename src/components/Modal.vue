@@ -5,12 +5,11 @@
                 <h4> {{ title }} </h4>
             </div>
             <div class="modal-body">
-
+                 <slot></slot>
             </div>
             <div class="modal-footer">
 
             </div>
-            
         </div>
     </div>
 </template>
