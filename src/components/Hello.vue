@@ -2,18 +2,23 @@
   <div class="hello">
     <h1>{{ title }}</h1>
     <div>
-      <router-link to="/heroes">Heroes</router-link>
+      <banner :currentview="'home'"></banner>
     </div>
   </div>
 </template>
 
 <script>
+import Banner from './Banner.vue'
+
 export default {
   name: 'hello',
   data () {
     return {
       title: 'We are all Heroes'
     }
+  },
+  components: {
+    'banner': Banner
   }
 }
 </script>
