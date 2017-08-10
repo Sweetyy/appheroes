@@ -7,9 +7,6 @@
             <div class="modal-body">
                  <slot></slot>
             </div>
-            <div class="modal-footer">
-
-            </div>
         </div>
     </div>
 </template>
