@@ -2,17 +2,17 @@
   <section class="main heroes">
     <h1>{{ title }}</h1>
     <banner :currentview="'heroes'"></banner>
-    <div>
-      <ul>
+    <div class="fadein">
+      <ul class="list-heroes">
         <li v-for="(heroe, index) in heroes">
           <a @click="removeElement(index)" class="item-remove">X</a>
           <h3 @click="info(heroe.name)" v-bind:class="heroe.name == active ? 'active' : ''">{{heroe.name}}</h3>
           <p v-if="heroe.name == active">{{heroe.description}}</p>
         </li>
       </ul>
-    </div>
 
-    <a @click="showModal('createhero')" class="btn-sweet btn-fat">Summon your hero!</a>
+      <a @click="showModal('createhero')" class="btn-sweet btn-fat">Summon your hero!</a>
+    </div>
 
     <modal :id="'createhero'" :title="'Summon your hero'" v-bind:class="open == 'createhero' ? 'show' : ''">
       <slot>
@@ -79,7 +79,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-ul {
+ul.list-heroes {
   list-style-type: none;
   padding: 0;
   display: flex;
@@ -88,7 +88,7 @@ ul {
   flex-flow: row wrap;
 }
 
-li {
+ul.list-heroes li {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -118,7 +118,7 @@ h3.active {
   transition: all 0.25s;
 }
 
-li:hover .item-remove {
+ul.list-heroes li:hover .item-remove {
   opacity: 1;
 }
 </style>

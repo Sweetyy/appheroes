@@ -1,9 +1,7 @@
 <template>
-  <section class="hello">
+  <section class="home">
     <h1>{{ title }}</h1>
-    <div>
-      <banner :currentview="'home'"></banner>
-    </div>
+    <banner :currentview="'home'"></banner>
   </section>
 </template>
 
@@ -11,7 +9,7 @@
 import Banner from './Banner.vue'
 
 export default {
-  name: 'hello',
+  name: 'home',
   data () {
     return {
       title: 'We are all Heroes'
@@ -24,22 +22,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
+<style scoped></style>

@@ -15,13 +15,68 @@ export default {
 * {
   box-sizing: border-box;
 }
+
+html, body {
+  margin: 0;
+  font-size: 16px;
+}
+
 #app {
   font-family: Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: 20px;
   margin-top: 60px;
+}
+
+@font-face {
+  font-family: "heroes-font";
+  src:url("assets/fonts/heroes-font.eot");
+  src:url("assets/fonts/heroes-font.eot?#iefix") format("embedded-opentype"),
+    url("assets/fonts/heroes-font.woff") format("woff"),
+    url("assets/fonts/heroes-font.ttf") format("truetype"),
+    url("assets/fonts/heroes-font.svg#heroes-font") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "heroes-font" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "heroes-font" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\61";
+}
+.icon-heroes:before {
+  content: "\62";
+}
+.icon-about:before {
+  content: "\63";
 }
 
 @keyframes fadein {
@@ -29,12 +84,17 @@ export default {
   100% {opacity: 1}
 }
 
-section {
+.fadein {
   animation: fadein 1s;
 }
 
 h1, h2, h3 {
   font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 a {
