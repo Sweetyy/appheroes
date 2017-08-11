@@ -5,7 +5,7 @@
     <div>
       <ul>
         <li v-for="(heroe, index) in heroes">
-          <a @click="removeElement()" class="item-remove">X</a>
+          <a @click="removeElement(index)" class="item-remove">X</a>
           <h3 @click="info(heroe.name)" v-bind:class="heroe.name == active ? 'active' : ''">{{heroe.name}}</h3>
           <p v-if="heroe.name == active">{{heroe.description}}</p>
         </li>
@@ -17,14 +17,14 @@
     <modal :id="'createhero'" :title="'Summon your hero'" v-bind:class="open == 'createhero' ? 'show' : ''">
       <slot>
         <div class="form-group">
-          <input type="text" v-model="heroes.name" class="form-heroe" placeholder="Your Heroe's name">
+          <input type="text" v-model="heroename" class="form-heroe" placeholder="Your Heroe's name">
         </div>
         <div class="form-group">
-          <textarea v-model="heroes.description" class="form-heroe" rows="4" placeholder="About him/her..."></textarea>
+          <textarea v-model="heroedescription" class="form-heroe" rows="4" placeholder="About him/her..." maxlength="200"></textarea>
         </div>
         <div class="flex-box flex-between">
           <a @click="open = ''" class="btn-sweet">Not yet</a>
-          <a @click="addRow" class="btn-sweet" :disabled="!heroes.name">Summon</a>
+          <a @click="addRow" class="btn-sweet" :disabled="heroename == '' || heroedescription == ''">Summon</a>
         </div>
       </slot>
     </modal>
@@ -42,6 +42,8 @@ export default {
       title: 'Heroes',
       active: '',
       open: '',
+      heroename: '',
+      heroedescription: '',
       heroes: [
         {name: 'Wonderwoman', description: 'The most powerful girl ever!'},
         {name: 'Superman', description: 'The most powerful man ever!'},
@@ -57,8 +59,10 @@ export default {
       this.open = key;
     },
     addRow: function (){
-      if(this.heroes.name != null && this.heroes.description != null) {
-        this.heroes.push({name: this.heroes.name, description: this.heroes.description});
+      if(this.heroename != '' && this.heroedescription != '') {
+        this.heroes.push({name: this.heroename, description: this.heroedescription});
+        this.heroename = '';
+        this.heroedescription = '';
         this.open = '';
       }
     },

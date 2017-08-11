@@ -55,10 +55,10 @@ p {
   width: 100%;
   padding: 10px 14px;
   border-radius: 4px;
-  color: #2c3e50;
   border: solid 1px lightgray;
   transition: all 0.25s;
   resize: none;
+  color: slategrey;
 }
 
 .form-heroe::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -105,6 +105,7 @@ p {
   border-radius: 2px;
   background: #42b983;
   letter-spacing: 0.5px;
+  transition: all 0.25s;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 

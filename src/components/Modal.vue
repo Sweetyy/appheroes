@@ -50,8 +50,11 @@ export default {
     background: white;
     box-shadow: 0 6px 6px rgba(10,16,20,.15), 0 0 52px rgba(10,16,20,.12);
     padding: 24px;
-    color: rgba(0,0,0,.87);
     border-radius: 4px;
     min-width: 400px;
+}
+
+h3 {
+    font-size: 1.2em;
 }
 </style>
