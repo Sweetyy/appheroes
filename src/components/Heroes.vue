@@ -1,13 +1,19 @@
 <template>
   <section class="main heroes">
-    <h1>{{ title }}</h1>
     <banner :currentview="'heroes'"></banner>
+    <h1>{{ title }}</h1>
     <div class="fadein">
       <ul class="list-heroes">
         <li v-for="(heroe, index) in heroes">
           <a @click="removeElement(index)" class="item-remove">X</a>
           <h3 @click="info(heroe.name)" v-bind:class="heroe.name == active ? 'active' : ''">{{heroe.name}}</h3>
-          <p v-if="heroe.name == active">{{heroe.description}}</p>
+          <div v-if="heroe.name == active">
+            <p>{{heroe.description}}</p>
+            <br/>
+            <a @click="hero(heroe.name)">
+              <small>About</small>
+            </a>
+          </div>
         </li>
       </ul>
 
@@ -32,8 +38,8 @@
 </template>
 
 <script>
-import Banner from './Banner.vue'
-import Modal from './Modal.vue'
+import Banner from './../views/Banner.vue'
+import Modal from './../views/Modal.vue'
 
 export default {
   name: 'heroes',
@@ -68,6 +74,9 @@ export default {
     },
     removeElement: function (index) {
       this.heroes.splice(index, 1);
+    },
+    hero: function (id) {
+      this.$router.push({ name: 'Hero', params: { heroName: id }})
     }
   },
   components: {

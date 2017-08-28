@@ -1,12 +1,12 @@
 <template>
   <section class="home">
-    <h1>{{ title }}</h1>
     <banner :currentview="'home'"></banner>
+    <h1>{{ title }}</h1>
   </section>
 </template>
 
 <script>
-import Banner from './Banner.vue'
+import Banner from './../views/Banner.vue'
 
 export default {
   name: 'home',
